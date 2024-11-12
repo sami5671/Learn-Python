@@ -1,0 +1,10 @@
+
+
+text = "sAmi alam"
+
+print("UPPERCASE: ",text.upper())
+print("LowerCase: ",text.lower())
+print("Capitalize: ",text.capitalize())
+print("Title: ",text.title())
+print("Swap: ",text.swapcase())
+print("Replace: ",text.replace("Hello", ""))

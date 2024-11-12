@@ -1,0 +1,56 @@
+
+
+text = "sAmi alam"
+
+print("UPPERCASE: ",text.upper())
+print("LowerCase: ",text.lower())
+print("Capitalize: ",text.capitalize())
+print("Title: ",text.title())
+print("Swap: ",text.swapcase())
+# print("Replace: ",text.replace("Hello", "World"))
+
+
+# Join a list into a string
+words = ['hello', 'world']
+print("Join:", ' '.join(words)) # Output: 'hello world'
+# Strip whitespace from both ends
+text = " hello world "
+print("Strip:", text.strip()) # Output: 'hello world'
+# Remove leading whitespace
+print("Left strip:", text.lstrip()) # Output: 'hello world '
+# Remove trailing whitespace
+print("Right strip:", text.rstrip()) # Output: ' hello world'
+# Check if string starts with a substring
+text = "hello world"
+print("Starts with 'hello':", text.startswith("hello")) # Output: True
+# Check if string ends with a substring
+print("Ends with 'world':", text.endswith("world")) # Output: True
+# Find the position of a substring
+print("Find 'world':", text.find("world")) # Output: 6
+# Count occurrences of a substring
+print("Count 'o':", text.count("o")) # Output: 2
+# Check if all characters are alphanumeric
+print("Is alphanumeric:", text.isalnum()) # Output: False
+# Check if all characters are alphabetic
+text = "hello"
+print("Is alphabetic:", text.isalpha()) # Output: True
+# Check if all characters are digits
+text = "12345"
+print("Is digit:", text.isdigit()) # Output: True
+# Check if the string contains only whitespace
+text = " "
+print("Is whitespace:", text.isspace()) # Output: True
+# Check if the string is titlecased
+text = "Hello World"
+print("Is titlecased:", text.istitle()) # Output: True
+
+# Example of combining methods
+# Capitalizing each word in a sentence
+sentence = "this is a sample sentence."
+capitalized_sentence = sentence.title()
+print("Capitalized sentence:", capitalized_sentence) # Output: 'This Is A
+
+# Removing extra spaces and converting to uppercase
+text = " hello world "
+cleaned_text = text.strip().upper()
+print("Cleaned and uppercase:", cleaned_text) 
