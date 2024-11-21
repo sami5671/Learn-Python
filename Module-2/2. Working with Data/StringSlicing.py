@@ -1,6 +1,6 @@
 
 
-text = "Sami"
+text = "Sami Alam"
 
 print(text[0:2])
 
