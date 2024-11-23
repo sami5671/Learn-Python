@@ -1,0 +1,32 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": {
+      "A": "Berlin",
+      "B": "Paris",
+      "C": "Rome",
+      "D": "Madrid"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "What is 5 + 7?",
+    "options": {
+      "A": "10",
+      "B": "12",
+      "C": "15",
+      "D": "7"
+    },
+    "answer": "B"
+  },
+  {
+    "question": "What is the largest planet in our solar system?",
+    "options": {
+      "A": "Earth",
+      "B": "Jupiter",
+      "C": "Mars",
+      "D": "Venus"
+    },
+    "answer": "B"
+  }
+]
