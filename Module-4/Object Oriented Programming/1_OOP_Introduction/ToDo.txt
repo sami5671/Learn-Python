@@ -1,0 +1,19 @@
+1. What is OOP
+2. key Points
+- class
+- object
+- attributes
+- method
+- Inheritance
+- Encapsulation
+- Polymorphism
+
+3. Use case
+- Reusable
+- Real-world Entities
+- Encapsulation
+- Inheritance for Reusability and Extensibility
+- Polymorphism for Flexibility
+- Design patterns
+- APIs and Web services
+- Database Interactions
