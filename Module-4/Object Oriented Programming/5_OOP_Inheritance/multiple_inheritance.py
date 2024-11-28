@@ -1,5 +1,5 @@
-# Multilevel Inheritance Example
-class GrandFather: 
+# Multiple Inheritance Example
+class Father: 
     x = 10
     y = 20
 
@@ -9,9 +9,6 @@ class GrandFather:
     def sub(self):
         print(self.x - self.y)
 
-
-class Father(GrandFather):
-    pass
 
 class Son(Father):
     pass
