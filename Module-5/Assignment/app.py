@@ -1,4 +1,5 @@
 import add_contact
+import view_contact
 
 while True:
     print("\n=================== Welcome to Contact Book Management System ==================\n")
@@ -18,7 +19,7 @@ while True:
         add_contact.add_contact()
     elif menu == "2":
         print("\n============ Here Are The All Contact List =========\n")
-        # print(withdraw(ostad, money))
+        view_contact.view_contact()
     elif menu == "3":
         print("\n============ Remove a Contact Info =========\n")
         # print(get_balance(ostad))
