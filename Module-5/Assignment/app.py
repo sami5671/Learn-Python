@@ -1,5 +1,7 @@
 import add_contact
 import view_contact
+import remove_contact
+import search_contactInfo
 
 while True:
     print("\n=================== Welcome to Contact Book Management System ==================\n")
@@ -22,10 +24,8 @@ while True:
         view_contact.view_contact()
     elif menu == "3":
         print("\n============ Remove a Contact Info =========\n")
-        # print(get_balance(ostad))
+        remove_contact.remove_contact()
     elif menu == "4":
-        print("\n============ Search a Contact Info =========\n")
-        
-        # print(get_balance(ostad))
+        search_contactInfo.search_contact()
     else: 
         print("Invalid option. Please try again.")
