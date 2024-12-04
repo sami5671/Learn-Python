@@ -1,16 +1,25 @@
-from read_contact import read_contact
+import os
 import csv
 def search_contact():
     print("\n============ Search a Contact Info =========\n")
     phone = input("Enter Phone Number: ")
     
-    if not read_contact(phone):
-        print("Phone number not found")
+    if not os.path.exists("All_Contacts.csv"):
+        print("The contact list is empty. please create a new contact then search again")
+        return False
     else:
         with open("All_Contacts.csv", "r") as file:
             csvFile = csv.reader(file)
             for line in csvFile:
-                if line[2] == phone:
-                    print(f"Name: {line[0]}, Email: {line[1]}, Phone: {line[2]}, Address: {line[3]}")
-                    break
+                if line[2].strip() == phone:
+                    print("\n================Contact Found:===================")
+                    print("Name: ", line[0])
+                    print("Email: ", line[1])
+                    print("Phone: ", line[2])
+                    print("Address: ", line[3])
+                    return True
+        print("Phone number not found")
+        return False
+    
+    
                 
