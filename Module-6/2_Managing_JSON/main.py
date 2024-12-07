@@ -14,7 +14,6 @@ personJSON = json.dumps(personOBJ, indent=4)
 print(personJSON)
 
 
-
 # JSON String to Python object
 
 personJSON = '{"name": "John", "age": 30, "city": "New York", "hasChild": false, "titles": ["Engineer", "programmer"]}'
