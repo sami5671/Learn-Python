@@ -40,7 +40,7 @@ def add_books():
         "price": price,
         "quantity": quantity,
         "bookAddedAt": bookAddedAt,
-        "bookUpdatedAt": "",
+        "bookLastUpdatedAt": "",
     }
 
     save_book(bookDetails)
