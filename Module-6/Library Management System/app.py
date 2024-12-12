@@ -1,4 +1,6 @@
 import add_book
+import delete_book
+import update_book
 import view_books
 from response_messages import style_CLI
 
@@ -20,13 +22,11 @@ while True:
     elif menu == "1":
         style_CLI("Please add Your Book to Library Management System")
         add_book.add_books()
-        pass
     elif menu == "2":
         view_books.view_books()
-        pass
     elif menu == "3":
-        pass
+        update_book.update_book()
     elif menu == "4":
-        pass
+        delete_book.delete_book()
     else:
         print("Choose a valid number")
