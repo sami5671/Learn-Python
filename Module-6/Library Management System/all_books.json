@@ -1,0 +1,32 @@
+[
+    {
+        "title": "fn",
+        "author": "qf",
+        "isbn": 4490,
+        "year": "12",
+        "price": "132",
+        "quantity": "134",
+        "bookAddedAt": "12-12-2024 19:57:13",
+        "bookUpdatedAt": ""
+    },
+    {
+        "title": "fw",
+        "author": "wf",
+        "isbn": 9326,
+        "year": "324",
+        "price": "34",
+        "quantity": "134",
+        "bookAddedAt": "12-12-2024 19:57:23",
+        "bookUpdatedAt": ""
+    },
+    {
+        "title": "kndv",
+        "author": "efbj",
+        "isbn": 3114,
+        "year": "13",
+        "price": "314",
+        "quantity": "314",
+        "bookAddedAt": "12-12-2024 19:57:32",
+        "bookUpdatedAt": ""
+    }
+]

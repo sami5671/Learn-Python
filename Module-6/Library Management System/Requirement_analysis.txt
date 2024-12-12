@@ -1,0 +1,14 @@
+Features    
+--------------------------------
+1. Add book
+2. view all books
+3. update book
+4. delete book
+
+Lend book feature:
+--------------------------------
+1. Borrower's name, Borrower's Phone, Book title, Return Due Date (DateTime)
+2. When someone lends a book, the quantity of the book will decrease.
+3. When the borrower returns the book, remove their lend info from the lend book file.
+4. When the borrower returns the book, the quantity of the book will increase.
+5. If there are no books available to lend, a message should be printed saying, "Not enough books are available to lend."
