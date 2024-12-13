@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime, timedelta
 
-from response_messages import no_book_found, success
+from response_messages import no_book_found
 
 
 def lend_book():
@@ -49,7 +49,7 @@ def lend_book():
                     with open("borrow_books.json", "w") as file:
                         json.dump(borrow_books, file, indent=4)
 
-                success()
+                print("Book Borrowed successfully")
                 return True
             else:
                 print("There are not enough books available to lend.")

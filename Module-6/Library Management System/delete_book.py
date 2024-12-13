@@ -1,7 +1,7 @@
 import json
 import os
 
-from response_messages import no_book_found, remove_book, style_CLI
+from response_messages import no_book_found, remove_book
 from view_books import view_books
 
 
@@ -29,3 +29,4 @@ def delete_book():
                 remove_book()
         else:
             no_book_found()
+            return False

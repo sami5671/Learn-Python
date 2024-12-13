@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 import save_book
-from response_messages import no_book_found, style_CLI, success
+from response_messages import no_book_found, update_book_success
 from view_books import view_books
 
 
@@ -39,7 +39,7 @@ def update_book():
             if flag:
                 with open("all_books.json", "w") as file:
                     json.dump(books, file, indent=4)
-                    success()
+                    update_book_success()
     else:
         no_book_found()
         return False

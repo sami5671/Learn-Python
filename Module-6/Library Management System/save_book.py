@@ -1,7 +1,7 @@
 import json
 import os
 
-from response_messages import success
+from response_messages import add_book_success
 
 
 def save_book(bookDetails):
@@ -11,7 +11,7 @@ def save_book(bookDetails):
         with open("all_books.json", "w") as file:
             books.append(bookDetails)
             json.dump(books, file, indent=4)
-            success()
+            add_book_success()
         return True
 
     with open("all_books.json", "r") as file:
@@ -20,5 +20,5 @@ def save_book(bookDetails):
 
     with open("all_books.json", "w") as file:
         json.dump(books, file, indent=4)
-        success()
+        add_book_success()
     return True
