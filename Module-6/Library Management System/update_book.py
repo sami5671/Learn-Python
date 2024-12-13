@@ -21,7 +21,7 @@ def update_book():
                     title = input("Enter Book Title: ")
                     author = input("Enter Author Name: ")
                     year = int(input("Enter Publishing Year Number: "))
-                    price = int(input("Enter Book Price: "))
+                    price = input("Enter Book Price: ")
                     quantity = int(input("Enter Quantity Number: "))
 
                     book_last_updated_at = datetime.now().strftime("%d-%m-%Y %H:%M:%S")

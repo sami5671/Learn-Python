@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "title": "cnk",
+        "author": "dv",
+        "isbn": 8376,
+        "year": 123,
+        "price": "",
+        "quantity": 9,
+        "bookAddedAt": "13-12-2024 10:13:10",
+        "bookLastUpdatedAt": "13-12-2024 11:18:12"
+    },
+    {
+        "title": "nd",
+        "author": "d",
+        "isbn": 1941,
+        "year": 12,
+        "price": "22",
+        "quantity": 9,
+        "bookAddedAt": "13-12-2024 10:13:29",
+        "bookLastUpdatedAt": "13-12-2024 11:18:45"
+    }
+]

@@ -1,5 +1,7 @@
 import add_book
 import delete_book
+import lend_book
+import return_book
 import update_book
 import view_books
 from response_messages import style_CLI
@@ -13,6 +15,8 @@ while True:
     print("2. View All Books")
     print("3. Update Book")
     print("4. Delete Book")
+    print("5. Lend Book")
+    print("6. Return Book")
 
     menu = input("Please select an option: ")
 
@@ -28,5 +32,9 @@ while True:
         update_book.update_book()
     elif menu == "4":
         delete_book.delete_book()
+    elif menu == "5":
+        lend_book.lend_book()
+    elif menu == "6":
+        return_book.return_book()
     else:
         print("Choose a valid number")

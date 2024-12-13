@@ -2,7 +2,7 @@ import os
 import random
 from datetime import datetime
 
-from input_validation import check_name_validation, check_number
+from input_validation import check_name_validation
 from save_book import save_book
 
 
@@ -17,15 +17,9 @@ def add_books():
         print("The book title should be a valid string")
         return False
 
-    year = input("Enter Publishing Year Number: ")
-    if not check_number(year):
-        print("The year should be a valid number")
-        return False
+    year = int(input("Enter Publishing Year Number: "))
 
-    quantity = input("Enter Book Quantity: ")
-    if not check_number(quantity):
-        print("The quantity should be a valid number")
-        return False
+    quantity = int(input("Enter Book Quantity: "))
 
     price = input("Enter Book Price: ")
 
