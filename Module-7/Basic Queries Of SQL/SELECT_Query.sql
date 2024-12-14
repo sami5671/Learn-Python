@@ -1,2 +1,4 @@
 -- customers all details
-SELECT * FROM customers
+
+
+SELECT * FROM employee WHERE `Gender` = "Male" and employee = DESC

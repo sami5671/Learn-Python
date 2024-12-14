@@ -1,2 +1,2 @@
-CREATE DATABASE bank_account
+CREATE DATABASE company_info
 
