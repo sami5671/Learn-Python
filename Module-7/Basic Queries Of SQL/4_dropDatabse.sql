@@ -1,1 +1,1 @@
-DROP DATABASE "database name"
+DROP DATABASE company_info

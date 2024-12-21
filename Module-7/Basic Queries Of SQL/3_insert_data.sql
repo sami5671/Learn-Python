@@ -1,0 +1,103 @@
+INSERT INTO Employee (EmpID, EmpName, Gender) VALUES
+(1, 'John Doe', 'Male'),
+(2, 'Jane Smith', 'Female'),
+(3, 'Michael Brown', 'Male'),
+(4, 'Emily Davis', 'Female'),
+(5, 'David Wilson', 'Male'),
+(6, 'Sophia Johnson', 'Female'),
+(7, 'Daniel Taylor', 'Male'),
+(8, 'Olivia White', 'Female'),
+(9, 'James Moore', 'Male'),
+(10, 'Isabella Clark', 'Female'),
+(11, 'William Hall', 'Male'),
+(12, 'Mia Turner', 'Female'),
+(13, 'Alexander Adams', 'Male'),
+(14, 'Charlotte Lewis', 'Female'),
+(15, 'Ethan Scott', 'Male');
+
+
+INSERT INTO EmployeeDetails (EmpID, Designation, Department, JoiningDate) VALUES
+(1, 'Software Engineer', 'IT', '2020-01-15'),
+(2, 'Data Analyst', 'Analytics', '2019-03-12'),
+(3, 'HR Manager', 'Human Resources', '2018-05-20'),
+(4, 'Product Manager', 'Management', '2021-06-10'),
+(5, 'System Administrator', 'IT', '2022-11-05'),
+(6, 'UI/UX Designer', 'Design', '2020-07-15'),
+(7, 'Backend Developer', 'IT', '2021-12-25'),
+(8, 'Marketing Manager', 'Marketing', '2020-10-10'),
+(9, 'Full Stack Developer', 'IT', '2021-04-14'),
+(10, 'Content Writer', 'Marketing', '2019-09-02'),
+(11, 'Data Scientist', 'Analytics', '2021-03-18'),
+(12, 'Quality Analyst', 'IT', '2019-07-22'),
+(13, 'DevOps Engineer', 'IT', '2022-02-01'),
+(14, 'Business Analyst', 'Analytics', '2020-05-17'),
+(15, 'Frontend Developer', 'IT', '2021-08-25');
+
+INSERT INTO SalaryInfo (EmpID, BasicSalary, Allowances) VALUES
+(1, 60000, 10000),
+(2, 55000, 8000),
+(3, 75000, 15000),
+(4, 80000, 20000),
+(5, 50000, 5000),
+(6, 52000, 6000),
+(7, 65000, 12000),
+(8, 70000, 18000),
+(9, 72000, 15000),
+(10, 48000, 4000),
+(11, 90000, 25000),
+(12, 45000, 3000),
+(13, 70000, 12000),
+(14, 60000, 8000),
+(15, 55000, 7000);
+
+INSERT INTO FieldOfWork (EmpID, WorkField) VALUES
+(1, 'Web Development'),
+(2, 'Data Analysis'),
+(3, 'Human Resource Management'),
+(4, 'Product Development'),
+(5, 'Network Administration'),
+(6, 'User Experience Design'),
+(7, 'Backend Development'),
+(8, 'Marketing Strategy'),
+(9, 'Full Stack Development'),
+(10, 'Content Creation'),
+(11, 'Machine Learning'),
+(12, 'Quality Assurance'),
+(13, 'Cloud Infrastructure'),
+(14, 'Business Intelligence'),
+(15, 'Frontend Development');
+
+INSERT INTO WorkingHours (EmpID, HoursPerDay, ShiftType) VALUES
+(1, 8.0, 'Day'),
+(2, 8.5, 'Day'),
+(3, 7.5, 'Day'),
+(4, 9.0, 'Day'),
+(5, 8.0, 'Day'),
+(6, 8.5, 'Day'),
+(7, 8.0, 'Night'),
+(8, 9.0, 'Day'),
+(9, 8.5, 'Night'),
+(10, 7.5, 'Day'),
+(11, 8.0, 'Day'),
+(12, 8.0, 'Day'),
+(13, 9.0, 'Night'),
+(14, 8.0, 'Day'),
+(15, 8.5, 'Day');
+
+
+INSERT INTO EmployeeExpertise (EmpID, ExpertiseArea) VALUES
+(1, 'ReactJS'),
+(2, 'SQL'),
+(3, 'Employee Relations'),
+(4, 'Agile Development'),
+(5, 'Network Security'),
+(6, 'Figma'),
+(7, 'Node.js'),
+(8, 'Digital Marketing'),
+(9, 'MERN Stack'),
+(10, 'SEO Optimization'),
+(11, 'Python'),
+(12, 'Automation Testing'),
+(13, 'AWS'),
+(14, 'Power BI'),
+(15, 'HTML/CSS');

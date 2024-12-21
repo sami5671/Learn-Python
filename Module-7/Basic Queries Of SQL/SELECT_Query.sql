@@ -1,4 +1,4 @@
 -- customers all details
 
 
-SELECT * FROM employee WHERE `Gender` = "Male" and employee = DESC
+SELECT * FROM employee WHERE `Gender` = "Male" ORDER BY `EmpID` ASC

@@ -1,16 +1,43 @@
--- Step 1: Create Independent Tables
-
-
--- Create table regio
-CREATE TABLE regions (
-    region_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    region_name VARCHAR(25) DEFAULT NULL
+CREATE TABLE Employee (
+    EmpID INT NOT NULL PRIMARY KEY,
+    EmpName VARCHAR(50) NOT NULL,
+    Gender VARCHAR(10) NOT NULL
 );
 
--- Create table jobs
-CREATE TABLE jobs (
-    job_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    job_title VARCHAR(35) NOT NULL,
-    min_salary DECIMAL(8, 2) DEFAULT NULL,
-    max_salary DECIMAL(8, 2) DEFAULT NULL
+CREATE TABLE EmployeeDetails (
+    EmpID INT NOT NULL PRIMARY KEY,
+    Designation VARCHAR(50) NULL,
+    Department VARCHAR(50) NULL,
+    JoiningDate DATETIME NULL,
+    FOREIGN KEY (EmpID) REFERENCES Employee(EmpID) ON DELETE CASCADE
+);
+
+
+
+CREATE TABLE FieldOfWork (
+    EmpID INT NOT NULL PRIMARY KEY,
+    WorkField VARCHAR(50) NOT NULL,
+    FOREIGN KEY (EmpID) REFERENCES Employee(EmpID) ON DELETE CASCADE
+);
+
+CREATE TABLE WorkingHours (
+    EmpID INT NOT NULL PRIMARY KEY,
+    HoursPerDay DECIMAL(4, 2) NOT NULL,
+    ShiftType VARCHAR(20) NOT NULL,
+    FOREIGN KEY (EmpID) REFERENCES Employee(EmpID) ON DELETE CASCADE
+);
+
+CREATE TABLE EmployeeExpertise (
+    ExpertiseID INT AUTO_INCREMENT PRIMARY KEY,
+    EmpID INT NOT NULL,
+    ExpertiseArea VARCHAR(50) NOT NULL,
+    FOREIGN KEY (EmpID) REFERENCES Employee(EmpID) ON DELETE CASCADE
+);
+
+CREATE TABLE SalaryInfo (
+    EmpID INT NOT NULL PRIMARY KEY,
+    BasicSalary DECIMAL(10, 2) NOT NULL,
+    Allowances DECIMAL(10, 2) DEFAULT 0.00,
+    TotalSalary DECIMAL(10, 2) GENERATED ALWAYS AS (BasicSalary + Allowances) STORED,
+    FOREIGN KEY (EmpID) REFERENCES Employee(EmpID) ON DELETE CASCADE
 );
