@@ -1,0 +1,65 @@
+-- Active: 1734610841060@@127.0.0.1@3306@online_bookstore
+
+-- Authors table
+CREATE TABLE authors(
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+-- books table
+CREATE TABLE books(
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES authors(author_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+-- customer table
+
+CREATE TABLE customers(
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+-- orders table
+
+CREATE TABLE orders(
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT,
+    order_date DATETIME DEFAULT CURRENT_TIME,
+    total_amount DECIMAL(10,2) NOT NULL,
+
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
+
+-- order details
+
+CREATE TABLE order_details(
+    order_detail_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    book_id INT,
+    quantity INT NOT NULL CHECK (quantity > 0),
+    line_total DECIMAL(10,2),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE RESTRICT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)
