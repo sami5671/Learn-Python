@@ -1,0 +1,83 @@
+WEB DEVELOPMENT
+- Django
+- Flask
+- FastAPI
+- Requests
+
+Data Manipulation and Analysis
+- pandas
+- NumPy
+- Seaborn
+- Matplotlib 
+            (Linear Plot
+            Scatter Plot
+            Bar Plot
+            Stem Plot
+            Step Plot
+            Hist Plot
+            Box Plot
+            Pie Plot
+            Fill_Between Plot)
+
+Machine Learning and AI
+- scikit-learn
+- TensorFlow
+- PyTorch
+- Keras
+
+Data Science and Scientific Computing
+- SciPy
+- Jupyter
+- SymPy
+
+Database Interaction
+- SQLAlchemy
+- Psycopg2
+- PyMySQL
+
+Testing
+
+- pytest
+- unittest
+- tox
+
+Task Automation and Scripting
+
+- Celery
+- Invoke
+
+
+APIs and Parsing
+
+- BeautifulSoup
+- Scrapy
+- lxml
+
+File Handling and I/O
+- watchdog
+- pathlib
+
+
+Security and Authentication
+- bcrypt
+- passlib
+- PyJWT
+
+Concurrency and Parallelism
+- asyncio
+- multiprocessing
+
+Development and Debugging Tools
+- ipdb
+- black
+
+Command Line Interfaces
+- Click
+
+Environment Management
+- virtualenv
+- pipenv
+
+Logging and Monitoring
+- Loguru
+- Sentry SDK
