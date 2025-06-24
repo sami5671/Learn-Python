@@ -1,0 +1,21 @@
+-----------python django install globally-----------
+1. python --version
+2. pip install django
+3. python -m django --version
+
+-----------python django virtual env setup-----------
+1. pip install virtualenv
+2. virtualenv room1
+3. source ./Scripts/activate
+4. pip list
+5. pip install django
+6. python -m django --version
+7. deactivate
+
+
+------- In built in feature -------
+1. python -m venv myenv
+2. source ./myenv/Scripts/activate
+3. pip freeze
+4. django-admin startproject first_project
+
