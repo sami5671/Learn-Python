@@ -17,5 +17,23 @@
 1. python -m venv myenv
 2. source ./myenv/Scripts/activate
 3. pip freeze
-4. django-admin startproject first_project
+4. django-admin startproject first_project 
 
+-------- How to create a project with different apps ---------
+1. python -m venv myenv
+2. source ./myenv/Scripts/activate
+3. django-admin startproject first_project 
+4. inside the project directory create apps (django-admin startapp first_project 👍) 
+5. python manage.py runserver
+6. link those with settings.py main project in installed apps
+7. inside the individual app define urls.py and write urls
+8. sync(include) the app url with the mother project url 👍
+
+
+------------ Rendering Template globally -------------
+1. inside the mother project folder create a template folder and write index.html
+2. settings.py go to DIRS: [BASE_DIR/"template"] / ["template"]
+
+------------ Rendering Template inside app -------------
+1. inside the app folder create a template folder and create template folder name and write index.html
+2. render it in the app views file
