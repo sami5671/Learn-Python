@@ -8,4 +8,5 @@ def profile(request):
 
 
 def home(request):
-    return render(request, "student/index.html")
+    user_data = {"name": "abdur rahim", "age": 200, "married": True}
+    return render(request, "student/index.html", user_data)

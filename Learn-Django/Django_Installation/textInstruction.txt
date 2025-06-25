@@ -37,3 +37,12 @@
 ------------ Rendering Template inside app -------------
 1. inside the app folder create a template folder and create template folder name and write index.html
 2. render it in the app views file
+
+
+-------- context passing & django template language ----------
+
+
+-------- Creating model and model migration --------
+1. write model 
+2. python manage.py makemigrations (it will create migration file)
+3. python manage.py showmigrations (to watch all migrations)
