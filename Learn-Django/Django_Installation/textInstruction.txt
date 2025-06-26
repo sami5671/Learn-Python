@@ -45,4 +45,10 @@
 -------- Creating model and model migration --------
 1. write model 
 2. python manage.py makemigrations (it will create migration file)
-3. python manage.py showmigrations (to watch all migrations)
+3. python manage.py migrate
+4. python manage.py showmigrations (to watch all migrations)
+
+
+-------- Creating SuperUser and accessing admin panel -------
+1. python manage.py createsuperuser
+2. Register your models in the admin.py
