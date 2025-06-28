@@ -43,6 +43,11 @@ from .forms import StudentForm
 # this for model form
 
 
+def home(request):
+    students = models.Student.objects.all()
+    return render(request, "student/index.html", {"students": students})
+
+
 def create_student(request):
     if request.method == "POST":
         form = forms.StudentForm(request.POST, request.FILES)
@@ -54,6 +59,19 @@ def create_student(request):
     return render(request, "student/create_student.html", {"form": form})
 
 
-def home(request):
-    students = models.Student.objects.all()
-    return render(request, "student/index.html", {"students": students})
+def update_student(request, id):
+    student = models.Student.objects.get(id=id)
+    form = forms.StudentForm(instance=student)
+
+    if request.method == "POST":
+        form = forms.StudentForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect("home")
+    return render(request, "student/edit_student.html", {"form": form, "edit": True})
+
+
+def delete_student(request, id):
+    student = models.Student.objects.get(id=id)
+    student.delete()
+    return redirect("home")
