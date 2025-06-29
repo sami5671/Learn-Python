@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Templating Demo</title>
+  </head>
+  <body>
+    <h1>Welcome to django</h1>
+    <p>You location is: {{ location }}</p>
+    <p>Person Name: {{ person.name }}</p>
+    <p>Person age: {{ person.age }}</p>
+    <p>Person gender: {{ person.gender }}</p>
+
+    <h1>Hobbies ({{ person.hobbies|length }})</h1>
+    <ul>
+      {% for hobby in person.hobbies %}
+      <li>{{ hobby }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
