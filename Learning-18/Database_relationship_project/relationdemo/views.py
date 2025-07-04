@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render
 
-from .models import Profile
+from .models import Expense, Profile
 
 # Create your views here.
 
@@ -36,3 +36,25 @@ def user(request, pk):
         "location": profile.location,
     }
     return JsonResponse(profile_data, safe=False)
+
+
+def demo_one_to_many(request):
+    # expenses = Expense.objects.select_related("category").filter(category="1").all()
+    # expenses = (
+    #     Expense.objects.select_related("category")
+    #     .filter(category__name="Transportation")
+    #     .all()
+    # )
+    expenses = (
+        Expense.objects.select_related("category").filter(category__name="Food").all()
+    )
+    # expenses = Expense.objects.select_related("category").all()
+    expenses_data = [
+        {
+            "amount": str(e.amount),
+            "category": e.category.name,
+            "description": e.description,
+        }
+        for e in expenses
+    ]
+    return JsonResponse(expenses_data, safe=False)
