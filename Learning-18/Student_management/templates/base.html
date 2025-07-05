@@ -29,8 +29,8 @@
         </ul>
         {% if user.is_authenticated %}
         <div class="d-flex">
-          <span class="">{{user.username}}</span>
-          <a href="#" class="btn btn-danger mx-2">
+          <a href="{% url 'user_profile' %}">{{user.username}}</a>
+          <a href="{% url 'user_logout' %}" class="btn btn-danger mx-2">
             Logout
           </a>
         </div>

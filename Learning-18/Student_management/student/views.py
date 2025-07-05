@@ -1,5 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -61,6 +63,7 @@ class StudentLists(ListView):
 
 
 #  For function based views
+@login_required
 def create_student(request):
     if request.method == "POST":
         form = forms.StudentForm(request.POST, request.FILES)
@@ -73,12 +76,17 @@ def create_student(request):
 
 
 # for class based view
-class createStudent(CreateView):
+class createStudent(LoginRequiredMixin, CreateView):
     form_class = forms.StudentForm
     template_name = "student/create_student.html"
     success_url = reverse_lazy("home")
 
     def form_valid(self, form):
+        student = form.save(
+            commit=False
+        )  # database e data save hobe na but user er submit kora data peye jabo
+        student.user = self.request.user
+        student.save()
         return super().form_valid(form)
 
 
@@ -95,7 +103,7 @@ def update_student(request, id):
 
 
 # For Class based views
-class UpdateStudentData(UpdateView):
+class UpdateStudentData(LoginRequiredMixin, UpdateView):
     form_class = forms.StudentForm
     model = models.Student
     template_name = "student/edit_student.html"
@@ -115,7 +123,7 @@ def delete_student(request, id):
 
 
 # For Class based views
-class DeleteStudent(DeleteView):
+class DeleteStudent(LoginRequiredMixin, DeleteView):
     model = models.Student
     pk_url_kwarg = "id"
     success_url = reverse_lazy("home")
@@ -152,3 +160,15 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, "student/auth_form.html", {"form": form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect("home")
+
+
+@login_required
+def profile(request):
+    students = models.Student.objects.filter(user=request.user)
+    print(students)
+    return render(request, "student/profile.html", {"students": students})

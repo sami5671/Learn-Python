@@ -2,20 +2,22 @@
 {% block title %} Home Page {% endblock %}
 {% block content %}
 <!-- list student -->
-<h1 class="text-center mb-4">All Students List</h1>
+<h1 class="text-center mb-4">Profile</h1>
 <div class="d-flex flex-wrap justify-content-between container">
 
-  {% for student in students %}
-  <div class="card" style="width: 18rem">
-    <img src="{{student.photo.url}}" class="card-img-top" alt="{{ student.name }}" height="200" width="200" />
-    <div class="card-body">
-      <h5 class="card-title">{{student.name}}</h5>
-      <p class="card-text">Email: {{student.email}}</p>
-      <p class="card-text">Phone: {{student.phone}}</p>
-      <p class="card-text">StudentID: {{student.id}}</p>
+    {% for student in students %}
+    <div class="card" style="width: 18rem">
+        <img src="{{student.photo.url}}" class="card-img-top" alt="{{ student.name }}" height="200" width="200" />
+        <div class="card-body">
+            <h5 class="card-title">{{student.name}}</h5>
+            <p class="card-text">Email: {{student.email}}</p>
+            <p class="card-text">Phone: {{student.phone}}</p>
+            <p class="card-text">StudentID: {{student.id}}</p>
+            <a href={% url 'update_student' id=student.id %} class="btn btn-warning">Edit</a>
+            <a href={% url 'delete_student' id=student.id %} class="btn btn-danger">Delete</a>
+        </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
 </div>
 
 <!-- list students -->

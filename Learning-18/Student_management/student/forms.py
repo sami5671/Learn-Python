@@ -10,7 +10,8 @@ class StudentForm(forms.ModelForm):
 
     class Meta:
         model = models.Student
-        fields = "__all__"
+        # fields = "__all__"
+        exclude = ["user"]
         labels = {"name": "Full Name", "photo": "Upload Photo"}
         help_texts = {"email": "Email will be confidential"}
 
