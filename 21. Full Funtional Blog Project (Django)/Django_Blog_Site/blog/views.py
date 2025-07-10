@@ -43,3 +43,34 @@ def post_list(request):
         "tag_query": tagQ,
     }
     return render(request, "", context)
+
+
+def post_details(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == "POST":
+        comment_form = CommentForm(request.Post)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)  # not database save
+            comment.post = post
+            comment.author = request.user
+            comment.save()  # database save
+            return redirect("", id=post.id)
+    else:
+        comment_form = CommentForm()
+
+    comments = post.comment_set.all()
+    is_liked = post.liked_users.filter(id=request.user.id).exists()
+    liked_count = post.liked_users.count()
+
+    context = {
+        "post": post,
+        "category": Category.objects.all(),
+        "tag": Tag.objects.all(),
+        "comments": comments,
+        "comment_form": comment_form,
+        "is_liked": is_liked,
+        "liked_count": liked_count,
+    }
+    post.view_count += 1
+    post.save()
+    return render(request, "", context)
