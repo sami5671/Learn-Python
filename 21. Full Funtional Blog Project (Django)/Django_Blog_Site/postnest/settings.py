@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "auths",
+    "blog",
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -125,4 +126,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # user model (app name.model_name)
 
-AUTH_USER_MODEL = "auths.User"
+# AUTH_USER_MODEL = "auths.User"
