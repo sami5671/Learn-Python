@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
 from django.db.models import Q
@@ -42,19 +43,19 @@ def post_list(request):
         "category_query": categoryQ,
         "tag_query": tagQ,
     }
-    return render(request, "", context)
+    return render(request, "blog/post_list.html", context)
 
 
 def post_details(request, id):
     post = get_object_or_404(Post, id=id)
     if request.method == "POST":
-        comment_form = CommentForm(request.Post)
+        comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)  # not database save
             comment.post = post
             comment.author = request.user
             comment.save()  # database save
-            return redirect("", id=post.id)
+            return redirect("post_details", id=post.id)
     else:
         comment_form = CommentForm()
 
@@ -73,9 +74,10 @@ def post_details(request, id):
     }
     post.view_count += 1
     post.save()
-    return render(request, "", context)
+    return render(request, "blog/post_details.html", context)
 
 
+@login_required
 def like_post(request, id):
     post = get_object_or_404(Post, id=id)
     if post.liked_users.filter(id=request.user.id):
@@ -83,9 +85,10 @@ def like_post(request, id):
     else:
         post.liked_users.add(request.user)
 
-    return redirect("", id=post.id)
+    return redirect("post_details", id=post.id)
 
 
+@login_required
 def post_create(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -93,30 +96,32 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect("")
+            return redirect("post_list")
     else:
         form = PostForm()
 
-    return render(request, "", {"form": form})
+    return render(request, "blog/post_create.html", {"form": form})
 
 
+@login_required
 def post_update(request, id):
     post = get_object_or_404(Post, id=id)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect("", id=post.id)
+            return redirect("post_details", id=post.id)
     else:
         form = PostForm(instance=post)
 
-    return render(request, "", {"form": form})
+    return render(request, "blog/post_create.html", {"form": form})
 
 
+@login_required
 def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
-    return redirect("")
+    return redirect("post_list")
 
 
 def signup_view(request):
@@ -125,12 +130,13 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("")
+            return redirect("post_list")
     else:
         form = UserCreationForm()
-    return render(request, "", {"form": form})
+    return render(request, "user/signup.html", {"form": form})
 
 
+@login_required
 def profile_view(request):
     section = request.GET.get("section", "profile")
     context = {"section": section}
@@ -143,9 +149,9 @@ def profile_view(request):
             form = UpdateProfileForm(request.POST, instance=request.user)
             if form.is_valid():
                 form.save()
-                return redirect("")
+                return redirect("/profile?section=update")
         else:
             form = UpdateProfileForm(instance=request.user)
 
         context["form"] = form
-    return render(request, "", context)
+    return render(request, "user/profile.html", context)
