@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, UpdateProfileForm
 from .models import Category, Comment, Post, Tag
 
 
@@ -117,3 +117,35 @@ def post_delete(request, id):
     post = get_object_or_404(Post, id=id)
     post.delete()
     return redirect("")
+
+
+def signup_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("")
+    else:
+        form = UserCreationForm()
+    return render(request, "", {"form": form})
+
+
+def profile_view(request):
+    section = request.GET.get("section", "profile")
+    context = {"section": section}
+
+    if section == "posts":
+        posts = Post.objects.filter(author=request.user)
+        context["posts"] = posts
+    elif section == "update":
+        if request.method == "POST":
+            form = UpdateProfileForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return redirect("")
+        else:
+            form = UpdateProfileForm(instance=request.user)
+
+        context["form"] = form
+    return render(request, "", context)
