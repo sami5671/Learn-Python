@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -15,7 +16,7 @@ class Reviews(models.Model):
     movie = models.ForeignKey(
         MovieList, on_delete=models.CASCADE, related_name="reviews"
     )
-    reviewer = models.CharField(max_length=100)
+    reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.IntegerField()
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

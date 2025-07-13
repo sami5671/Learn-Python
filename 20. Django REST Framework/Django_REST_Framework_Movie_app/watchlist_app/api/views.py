@@ -1,11 +1,14 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from watchlist_app import models
 
-from . import serializers
+from . import permissions, serializers
+
+# ----------Function based views--------------
 
 # @api_view()
 # def movie_list(request):
@@ -61,24 +64,39 @@ from . import serializers
 #         return Response({"message": "Movie deleted Successfully"})
 
 
+# ----------Class based views--------------
 # 1. list of all movies, create a new movie
-class MovieListCreateView(generics.ListCreateAPIView):
-    queryset = models.MovieList.objects.all()
+# class MovieListCreateView(generics.ListCreateAPIView):
+#     queryset = models.MovieList.objects.all()
+#     serializer_class = serializers.MovieListSerializer
+
+
+# # single movie/update/delete
+# class MovieDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = models.MovieList.objects.all()
+#     serializer_class = serializers.MovieListSerializer
+
+
+# class ReviewListCreateView(generics.ListCreateAPIView):
+#     queryset = models.Reviews.objects.all()
+#     serializer_class = serializers.ReviewSerializer
+
+
+# # single movie/update/delete
+# class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = models.Reviews.objects.all()
+#     serializer_class = serializers.ReviewSerializer
+
+
+# ----------Model viewSet --------------
+class MovieListViewSet(viewsets.ModelViewSet):
+    queryset = models.MovieList.objects.prefetch_related(
+        "reviews"
+    )  # m2m , reverse foreign key relation
     serializer_class = serializers.MovieListSerializer
 
 
-# single movie/update/delete
-class MovieDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.MovieList.objects.all()
-    serializer_class = serializers.MovieListSerializer
-
-
-class ReviewListCreateView(generics.ListCreateAPIView):
-    queryset = models.Reviews.objects.all()
+class ReviewListViewSet(viewsets.ModelViewSet):
+    queryset = models.Reviews.objects.select_related("movie")
     serializer_class = serializers.ReviewSerializer
-
-
-# single movie/update/delete
-class ReviewDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Reviews.objects.all()
-    serializer_class = serializers.ReviewSerializer
+    permission_classes = [permissions.IsReviewerOrReadOnly, IsAuthenticated]
