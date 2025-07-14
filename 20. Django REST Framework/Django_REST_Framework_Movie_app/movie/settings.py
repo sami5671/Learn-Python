@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "watchlist_app",
     "user_app",
+    "django_filters",
     "rest_framework.authtoken",
 ]
 
@@ -110,7 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
-    ]
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

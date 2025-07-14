@@ -1,3 +1,4 @@
+import django_filters.rest_framework
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, viewsets
 from rest_framework.decorators import api_view
@@ -99,4 +100,7 @@ class MovieListViewSet(viewsets.ModelViewSet):
 class ReviewListViewSet(viewsets.ModelViewSet):
     queryset = models.Reviews.objects.select_related("movie")
     serializer_class = serializers.ReviewSerializer
-    permission_classes = [permissions.IsReviewerOrReadOnly, IsAuthenticated]
+    # permission_classes = [permissions.IsReviewerOrReadOnly, IsAuthenticated]
+    filter_backends = [django_filters.rest_framework.DjangoFilterBackend]
+    # filterset_fields = ["reviewer", "rating"]
+    filterset_fields = ["reviewer__username", "rating"]
